@@ -13,7 +13,6 @@ logical :: prefix
 
 character(1),dimension(:),allocatable :: hex_out
 
-
 101 format(a) ! plain text descriptor
 102 format(a,i3)
 
@@ -35,7 +34,6 @@ do i = length - 1,0,-1
 		inp = inp - (pos(i) * (16 ** i))
 		inp_real = real(inp,8)
 	endif
-	write(*,'(i2,x,e12.6)') pos(i), inp_real
 enddo
 
 do i = 0,length - 1
@@ -57,6 +55,7 @@ do i = 0,length - 1
 	endselect
 enddo
 
+write(*,*)
 prefix = .true.
 if (prefix) then
 	write(*,101,advance = 'no') '0x'
@@ -72,10 +71,6 @@ enddo
 
 
 
-write(*,101)
-write(*,101) 'INPUT ECHO'
-write(*,102) 'inp - ', inp
-write(*,102) 'length - ', length
 
 
 end
